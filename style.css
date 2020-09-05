@@ -7,6 +7,7 @@ li {
     border: 2px solid #056674;
     list-style-type: none;
     padding-left: 10px;
+    margin: 5px;
 }
 
 ul {
