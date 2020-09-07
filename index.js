@@ -25,19 +25,24 @@ function getNationalParkData(query, maxResults = 10) {
         .then(response => {
             if (!response.ok) {
                 console.log('uh oh')
+                throw err
             } else {
-                console.log(`##${response}`)
                 return response.json()
             }
         })
         .then(responseJson => displayResults(responseJson))
-        // .then(response => response.json())
-        // .then(responseJson => displayResults(responseJson))
+        .catch(err => {
+            $("#results").addClass('hidden');
+            $('#errorSection').removeClass('hidden')
+            $('#errorSentence').text(`Something went wrong: ${err.message}`)
+        })
 }
 
 function displayResults(responseJson) {
     console.log(responseJson);
+    $('#errorSection').addClass('hidden')
     $('#resultsList').empty();
+    $("#results").removeClass('hidden')
     console.log(responseJson.data.length)
     for (let i = 0; i < responseJson.data.length; i++) {
         $('#resultsList').append(`<li><h3>${responseJson.data[i].fullName}</h3>

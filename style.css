@@ -29,3 +29,7 @@ a:hover {
 a:active {
     color: #d2e603
 }
+
+.hidden {
+    display: none;
+}
